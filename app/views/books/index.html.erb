@@ -12,14 +12,14 @@
         <tr>
             <td><%= book.title %></td>
             <td><%= book.body %></td>
-            <td><a class="" href="">Show</a></td>
-            <td><a class="" href="">Edit</a></td>
-            <td><a class="" href="">Destroy</a></td>
-        </tr
+            <td><a href="books/:id">Show</a></td>
+            <td><a href="books/:id/edit">Edit</a></td>
+            <td><a href="books/:id/destroy">Destroy</a></td>
+        </tr>
         <% end %>
     </tbody>
 </table>
-<%= form_with model: Book.new do |f| %>
+<%= form_with model: @book,url:'/books',method: :post do |f| %>
 <h2>New book</h2>
     <label for ="book-title">Title</label>
     <div class="book-title"><%=f.text_field :title %></div>
