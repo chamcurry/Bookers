@@ -8,22 +8,22 @@
         </tr>
     </thead>
     <tbody>
-        <% @books.each do |book| %>
+        <% @books.each do |books| %>
         <tr>
-            <td><%= book.title %></td>
-            <td><%= book.body %></td>
-            <td><a href="books/:id">Show</a></td>
-            <td><a href="books/:id/edit">Edit</a></td>
-            <td><a href="books/:id/destroy">Destroy</a></td>
+            <td><%= books.title %></td>
+            <td><%= books.body %></td>
+            <td><%= link_to "Show",book_path(books.id)%></td>
+            <td><%= link_to "Edit",edit_book_path(books.id)%></td>
+            <td><%= link_to "Destroy","/books/#{books.id}",method: :delete,"data-confirm"=>"Are you sure?"%></td>
         </tr>
         <% end %>
     </tbody>
 </table>
-<%= form_with model: @book,url:'/books',method: :post do |f| %>
+<%= form_with model:@book do |f| %>
 <h2>New book</h2>
     <label for ="book-title">Title</label>
     <div class="book-title"><%=f.text_field :title %></div>
-    
+
     <label for ="book-body">Body</label>
     <div class= "book-body"><%=f.text_area :body %></div>
     <%=f.submit 'Create Book' %>
