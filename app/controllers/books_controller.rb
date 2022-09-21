@@ -1,7 +1,5 @@
 class BooksController < ApplicationController
-    def new
-     @book = Book.new
-    end
+
     def create
       @book =Book.new(book_params)
       if @book.save
@@ -12,6 +10,7 @@ class BooksController < ApplicationController
       end
     end
     def index
+      puts "作成したキー #{ENV['SECRET_KEY']}"
       @books =Book.all
       # ↓form_withに入れる為の空のインスタンス
       @book =Book.new
